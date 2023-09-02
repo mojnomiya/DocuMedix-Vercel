@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Main Content -->
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-6">
+			<div class="widget-area-2 proclinic-box-shadow">
+				<div class="col-md-6">
+					<div class="card-deck">
+						{% if patient.image %}
+						<img class="card-img" src="{{patient.image.url}}" alt="Card image">
+						{% endif %}
+						<div class="card-body mb-4">
+							<h4 class="card-title">{{patient}}</h4>
+							<p class="card-text">{{patient.department}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Widget Item -->
+		<div class="col-md-6">
+			<div class="widget-area-2 proclinic-box-shadow">
+				<h3 class="widget-title">Patient Details</h3>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>											
+								<td><strong>Name</strong></td>
+								<td>{{patient.get_full_name}}</td>
+							</tr>
+							<tr>
+								<td><strong>Date Of Birth</strong> </td>
+								<td>{{patient.date_of_birth}}</td>
+							</tr>
+							<tr>
+								<td><strong>Gender</strong></td>
+								<td>{{patient.gender}}</td>
+							</tr>
+							<tr>
+								<td><strong>Address</strong></td>
+								<td>{{patient.address}}</td>
+							</tr>
+							<tr>
+								<td><strong>Phone </strong></td>
+								<td>{{patient.phone_no}}</td>
+							</tr>
+							<tr>
+								<td><strong>Email</strong></td>
+								<td>{{patient.email}}</td>
+							</tr>									
+						</tbody>
+					</table>
+				</div>
+				<a href="{% url 'edit-patient' patient.id %}" class="btn btn-success mb-3"><span class="ti-pencil-alt"></span> Edit Patient</a>
+				<a href="{% url 'delete-patient' patient.id %}"  class="btn btn-danger mb-3"><span class="ti-trash"></span> Delete Patient</a>
+			</div>
+		</div>
+		
+		<!-- /Widget Item -->
+	</div>
+</div>
+<!-- /Main Content -->
+{% endblock %}
